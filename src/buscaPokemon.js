@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
-import './App.css';
 
-function App () {
-  const [searchTerm, setSearchTerm] = useState("")
+function buscaPokemon (searchTerm) {
   const [pokemon, setPokemon] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -35,24 +33,7 @@ function App () {
     fetchPokemon()
   }, [searchTerm])
 
-  return (
-    <>
-      <h1>Buscador de Pokemon</h1>
-      <input type='text' placeholder='Escrbe el nombre del pokemon' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+  return (pokemon, loading, error)
+}
 
-      {loading && <p>Cargando...</p>}
-      {pokemon && (
-        <div>
-          <h2>{pokemon.name.toUpperCase()}</h2>
-          <img src={pokemon.image} alt={pokemon.name} />
-        </div>
-      )}
-
-      {error && <p>{error}</p>}
-
-    </>
-  )
-  
-};
-
-export default App;
+export default buscaPokemon
